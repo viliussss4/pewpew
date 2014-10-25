@@ -20,4 +20,23 @@ describe Sport do
     end
   end
 
+  describe '::find!' do
+    let(:sport) { Sport.new id: id }
+    before { expect(Sport).to receive(:all!).and_return data }
+
+    context 'sport exists' do
+      let(:data) { [sport] }
+      let(:id) { 1 }
+
+      it { expect(Sport.find! id).to eq sport }
+    end
+    context 'sport not found' do
+      let(:data) { [sport] }
+      let(:id) { 2 }
+
+      it { expect { Sport.find! 1 }.to raise_error Pewpew::Errors::DataNotFound }
+    end
+
+  end
+
 end

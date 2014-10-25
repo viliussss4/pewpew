@@ -7,6 +7,8 @@ module Pewpew
 
     class << self
 
+      @@data = nil
+
       def data
         @@data
       end
