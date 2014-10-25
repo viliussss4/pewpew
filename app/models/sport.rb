@@ -5,7 +5,7 @@ class Sport < Pewpew::Data
   attribute :title, String
   attribute :meetings, Array
   attribute :is_virtual, Boolean
-  attribute :events, Array
+  attribute :events, Array[Event]
 
   class << self
 
@@ -25,6 +25,10 @@ class Sport < Pewpew::Data
       sport
     end
 
+  end
+
+  def events
+    super.extend Queries
   end
 
 end

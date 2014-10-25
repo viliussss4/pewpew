@@ -1,6 +1,12 @@
 describe Sport do
   it { expect(Sport.ancestors).to include Pewpew::Data }
 
+  describe '#events' do
+    let(:sport) { Sport.new events: [ id: 1 ] }
+
+    it { expect(sport.events).to respond_to :find! }
+  end
+
   describe '::all!' do
     before { expect(Sport).to receive(:data).at_least(:once).and_return data }
     context 'data fetched' do
