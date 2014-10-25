@@ -3,6 +3,7 @@ ruby '2.1.2'
 gem 'rails', '4.1.4'
 
 gem 'virtus'
+gem 'haml'
 
 group :development do
   gem 'spring'
