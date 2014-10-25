@@ -25,5 +25,6 @@ class Event < Pewpew::Data
   attribute :status_type, String
   attribute :status, String
   attribute :total_outcomes, Integer
-  attribute :outcomes, Array
+  attribute :outcomes, Array[Outcome]
+
 end
