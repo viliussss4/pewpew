@@ -7,14 +7,16 @@ module Pewpew
 
     class << self
 
-      attr_reader :data
+      def data
+        @@data
+      end
 
       def sync!
         uri = URI.parse DATA_URL
         http = Net::HTTP.new uri.host, uri.port
         reply = http.get uri.path
         if '200' == reply.code
-          @data = JSON.parse(reply.body)['sports']
+          @@data = JSON.parse(reply.body)['sports']
           true
         else
           raise Pewpew::Errors::Api.new 'failed to sync data'
