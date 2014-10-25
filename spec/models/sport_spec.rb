@@ -27,21 +27,17 @@ describe Sport do
   end
 
   describe '::find!' do
-    let(:sport) { Sport.new id: id }
-    before { expect(Sport).to receive(:all!).and_return data }
+    let(:data) { double 'data' }
+    let(:queryable_object) { double 'queryable_object', find!: 'yay' }
+    let(:id) { 1 }
 
-    context 'sport exists' do
-      let(:data) { [sport] }
-      let(:id) { 1 }
-
-      it { expect(Sport.find! id).to eq sport }
+    it 'extends instance with Queries module and invokes find!' do
+      expect(Sport).to receive(:all!).and_return data
+      expect(data).to receive(:extend).with(Queries).and_return queryable_object
+      expect(queryable_object).to receive(:find!).with id
     end
-    context 'sport not found' do
-      let(:data) { [sport] }
-      let(:id) { 2 }
 
-      it { expect { Sport.find! 1 }.to raise_error Pewpew::Errors::DataNotFound }
-    end
+    after { Sport.find! id }
 
   end
 

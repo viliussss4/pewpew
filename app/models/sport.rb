@@ -18,11 +18,7 @@ class Sport < Pewpew::Data
     end
 
     def find! id
-      sport = all!.find { |sport| id == sport.id }
-      unless sport
-        raise Pewpew::Errors::DataNotFound
-      end
-      sport
+      all!.extend(Queries).find! id
     end
 
   end

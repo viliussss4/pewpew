@@ -6,13 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = @sport.events.find! params[:id]
-  end
-
-  private
-
-  def find_sport
-    @sport = Sport.find! params[:sport_id]
+    @event = find_event params[:id]
   end
 
 end
