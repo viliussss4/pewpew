@@ -1,5 +1,6 @@
 class Event < Pewpew::Data
   include Virtus.model
+  include Attributes
 
   attribute :id, Integer
   attribute :is_virtual, Boolean

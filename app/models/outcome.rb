@@ -1,5 +1,6 @@
 class Outcome
   include Virtus.model
+  include Attributes
 
   attribute :id, Integer
   attribute :description, String

@@ -2,7 +2,7 @@
   .row
     .col-md-1
       %h4= t '.title'
-    - @events.first.as_json.except('id', 'outcomes', 'title').keys.each do |attr|
+    - @events.first.event.get_attributes('keys', except: ['id', 'outcomes', 'title']) do |attr|
       .col-md-1
         %h4= attr
 - @events.each do |event|
@@ -10,7 +10,7 @@
     .col-md-1
       %a(href="#{sport_event_path(@sport.id, event.id)}")
         = event.title
-    - event.as_json.except('id', 'outcomes', 'title').values.each do |val|
+    - event.get_attributes('values', except: ['id', 'outcomes', 'title']).each do |val|
       .col-md-1
         = val
 

@@ -1,9 +1,15 @@
-.row
-  - @sports.try(:first).as_json.try(:keys).each do |attr|
-    .col-md-1
-      %h4= attr
-- @sports.each do |sport|
+- if @sports.present?
   .row
     .col-md-4
-      %a(href="#{sport_path(sport.id)}")
-        = sport.title
+      %h4= t '.title'
+    - @sports.first.get_attributes('keys', except: ['title', 'events', 'meetings']).each do |attr|
+      .col-md-4
+        %h4= attr
+  - @sports.each do |sport|
+    .row
+      .col-md-4
+        %a(href="#{sport_path(sport.id)}")
+          = sport.title
+      - sport.get_attributes('values', except: ['title', 'events', 'meetings']).each do |val|
+        .col-md-4
+          = val

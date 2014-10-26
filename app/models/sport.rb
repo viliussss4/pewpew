@@ -1,5 +1,6 @@
 class Sport < Pewpew::Data
   include Virtus.model
+  include Attributes
 
   attribute :id, Integer
   attribute :title, String
