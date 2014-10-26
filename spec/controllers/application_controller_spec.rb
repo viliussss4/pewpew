@@ -1,5 +1,13 @@
 describe ApplicationController do
 
+  describe '#cannot_connect_to_remote' do
+    it 'renders template with info' do
+      expect(controller).to receive(:render).with(file: 'shared/no_data')
+    end
+
+    after { controller.method(:cannot_connect_to_remote).call }
+  end
+
   describe '#fetch_data' do
 
     it 'syncs data' do
