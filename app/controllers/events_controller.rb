@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :find_sport
 
   def index
-    @events = @sport.events
+    @events = @sport.events.order_by! :pos, :asc
   end
 
   def show

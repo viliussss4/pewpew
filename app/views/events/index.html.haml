@@ -2,15 +2,15 @@
   .row
     .col-md-1
       %h4= t '.title'
-    - @events.first.event.get_attributes('keys', except: ['id', 'outcomes', 'title']) do |attr|
+    - @events.first.get_attributes('keys', except: ['id', 'outcomes', 'title']).each do |attr|
       .col-md-1
         %h4= attr
-- @events.each do |event|
-  .row
-    .col-md-1
-      %a(href="#{sport_event_path(@sport.id, event.id)}")
-        = event.title
-    - event.get_attributes('values', except: ['id', 'outcomes', 'title']).each do |val|
+  - @events.each do |event|
+    .row
       .col-md-1
-        = val
+        %a(href="#{sport_event_path(@sport.id, event.id)}")
+          = event.title
+      - event.get_attributes('values', except: ['id', 'outcomes', 'title']).each do |val|
+        .col-md-1
+          = val
 

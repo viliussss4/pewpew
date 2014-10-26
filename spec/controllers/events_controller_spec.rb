@@ -3,7 +3,7 @@ describe EventsController do
   it { expect(EventsController._process_action_callbacks.map &:filter).to including :find_sport }
 
   describe '#index' do
-    let(:sport) { double 'sport', events: [] }
+    let(:sport) { double 'sport', events: [].extend(Queries) }
     before { controller.instance_variable_set :@sport, sport }
 
     it 'gets all the sport events' do

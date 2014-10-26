@@ -9,4 +9,10 @@ module Queries
     object
   end
 
+  def order_by! field, order = :asc
+    ordered = self.sort_by!(&field.to_sym)
+    ordered.reverse! if :desc == order
+    ordered
+  end
+
 end

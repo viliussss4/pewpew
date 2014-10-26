@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from Pewpew::Errors::DataNotFound, with: :render_404
+  before_action :fetch_data, if: -> { Pewpew::Data.data.blank? }
 
   private
+
+  def fetch_data
+    Pewpew::Data.sync!
+  end
 
   def render_404
     raise ActionController::RoutingError.new 'Not Found'
