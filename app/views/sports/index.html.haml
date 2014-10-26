@@ -1,0 +1,8 @@
+.row
+  .col-md-4
+    %h4= t '.title'
+- @sports.each do |sport|
+  .row
+    .col-md-4
+      %a(href="#{sport_path(sport.id)}")
+        = sport.title

@@ -1,0 +1,8 @@
+.row
+  .col-md-4
+    %h4= t '.title'
+    = @sport.title
+  .col-md-4
+    %h4= t '.events'
+    %a(href="#{sport_events_path(@sport.id)}")
+      =t '.events'
