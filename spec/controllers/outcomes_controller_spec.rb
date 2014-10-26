@@ -8,7 +8,7 @@ describe OutcomesController do
     before { allow(controller).to receive(:params).and_return params }
 
     it 'fetches outcomes collection' do
-      expect(controller).to receive(:find_event).with(event.id).and_return event.outcomes
+      expect(controller).to receive(:find_event).with(event.id).and_return event
       controller.index
       expect(assigns(:outcomes)).to eq event.outcomes
     end

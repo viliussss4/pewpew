@@ -1,0 +1,10 @@
+- if @outcomes.present?
+  .row
+    - @outcomes.first.as_json.keys.each do |attr|
+      .col-md-1
+        %h4= attr
+  - @outcomes.each do |outcome|
+    .row
+      - outcome.as_json.values.each do |val|
+        .col-md-1
+          = val
