@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from Pewpew::Errors::DataNotFound, with: :render_404
-  before_action :fetch_data, if: -> { Pewpew::Data.data.blank? }
+  before_action :fetch_data, if: -> { Pewpew::Data.data.nil? }
 
   private
 

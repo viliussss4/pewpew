@@ -1,5 +1,14 @@
 describe ApplicationController do
 
+  describe '#fetch_data' do
+
+    it 'syncs data' do
+      expect(Pewpew::Data).to receive :sync!
+    end
+
+    after { controller.method(:fetch_data).call }
+  end
+
   describe '#find_event' do
     let(:sport) { double 'sport', events: double('events', find!: event) }
     let(:event) { double 'event', id: 1 }
