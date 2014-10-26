@@ -1,6 +1,7 @@
 .row
-  .col-md-4
-    %h4= t '.title'
+  - @sports.try(:first).as_json.try(:keys).each do |attr|
+    .col-md-1
+      %h4= attr
 - @sports.each do |sport|
   .row
     .col-md-4
